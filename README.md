@@ -1,6 +1,10 @@
-JS Page Manager
 
-PageManager it's Javascript page system managment in browser. Simple but powerful script wath work in all modern desctop and mobile browser and allow to create page managment in webview. This script will be ideal for mobile application that using HTML5 code.
+
+PageManager it's Javascript page system managment in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page managment in webview. This script will be ideal for mobile application that using HTML5 code.
+
+#Demo
+
+YT("http://www.youtube.com/watch?v=ArHQjQyIS70", print = TRUE)
 
 #Usage
 
