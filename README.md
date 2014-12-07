@@ -67,7 +67,7 @@ And finaly if You want do hide last one page from display container then:
 
 #API
 
-* Init Object
+ **Init Object**
 
 ``` javascript
 	new _PageManager(display_id,stack_id,callback)
@@ -76,7 +76,7 @@ And finaly if You want do hide last one page from display container then:
 - *stack_id* - an hidden element container for page or page templete.
 - *callback* - this callback fired then object will be ready.
 
-- Show Page
+**Show Page**
 
 ``` javascript
 	PageManager.showPage(page,callback)
@@ -84,7 +84,7 @@ And finaly if You want do hide last one page from display container then:
 - page - the page to be showed.
 - callback - this callback will befired then show animation ended.
 
-- Hide Page
+**Hide Page**
 
 ``` javascript
 	PageManager.hidePage(page,callback)
@@ -92,7 +92,7 @@ And finaly if You want do hide last one page from display container then:
 - page - the page what need to hide.
 - callback - this callback will befired then hide animation ended.
 
-- Get top one page from display container
+**Get top one page from display container**
 
 ``` javascript
 	PageManager.display.lastPage
