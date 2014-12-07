@@ -31,22 +31,7 @@ Now, include in to *"page-stack-id"* element same number of page or page templet
 
 ```
 
-#Initialize
-
-Its very simple to initialize PageManager object, just do this:
-
-``` javascript
-  PageManager=new _PageManager(display-id,stack-id,callback)
-  function(e){
-    if(e.err){console.log("err: "+e.err);return}
-    console.log("PageManager object is ready!")
-  })
-```
-* display-id - an ID of visible HTML DOM object (*usualy <div/>*) that will display pages.
-* stack-id -an ID of hidden HTML DOM object (*usualy <div/>*) that include page templete.
-* callback - an callback that fired than PageManager object will be ready.
-
-**Example:**
+Next step, its initialize PageManager object an passed containers ID and same callback.
 
 ``` javascript
   PageManager=new _PageManager("page-display-id","page-stack-id",function(e){
@@ -55,17 +40,7 @@ Its very simple to initialize PageManager object, just do this:
   })
 ```
 
-#Show page
-
-After PageManager object will be ready You can show any page from stack container to display container.
-
-``` javascript
-	PageManager.showPage('page-id',callback)
-```
-* 'page-id' -an page ID from page stack container.
-* callback - Will be fired then page finished animation and fully present in display container.
-
-#Example
+After PageManager object will be ready than You can show any page from stack container to display container.
 
 ``` javascript
 	PageManager.showPage('page-main-id',function(e){
@@ -73,18 +48,18 @@ After PageManager object will be ready You can show any page from stack containe
 	})
 ```
 
-# Add/remove display overlay
-Add or remove overlay object of display container. In this case user cant click inside the display container. For example if You need to show menu.
+In same cases You need to add or remove display overlay, this means that user can't click inside the display container. For example if You need to show menu.
 
 ``` javascript
 var menu_overlay=document.createElement("div")
     menu_overlay.className="menu-page-overlay"
     menu_overlay.onclick=hideMenu
-    PageManager.display.overlay=menu_overlay//add overlay to display
-```
-# Hide Page
 
-If You want do hide last one page from display container then call *hidePage()*
+    PageManager.display.overlay=menu_overlay //add overlay to display
+    ....
+    PageManager.display.overlay=null // remove overlay from display
+```
+And finaly if You want do hide last one page from display container then:
 
 ``` javascript
 	PageManager.hidePage()
