@@ -117,6 +117,27 @@ remove overlay:
 	PageManager.display.overlay=null
 ```
 
+#All API function
+
+<ul>
+<ol>PageManager.debug=tru|false -  print to console all debug info</ol>
+<ol>PageManager.pageClass="page" - default page class for pages inside stack container.</ol>
+<ol>PageManager.animation.default - animation object for page transition.</ol>
+<ol>PageManager.stack - get/set stack object.</ol>
+<ol>PageManager.display - get/set display object.</ol>
+<ol>PageManager.display.lastPage - get/set last page inside display object.</ol>
+<ol>PageManager.display.beforeLastPage - get before last page inside display object.</ol>
+<ol>PageManager.display.push(page) - push page to display object.</ol>
+<ol>PageManager.display.pop(page|null) - pop page|lastPage from display object.</ol>
+</ul>
+
+
+
+
+
+
+
+
 #Transition Animation
 Jus use defaul animation or specify own animation for page. Simple include *data-animation="default"* in to page declaration.
 
