@@ -120,15 +120,23 @@ remove overlay:
 #All API function
 
 <ul>
-<ol>PageManager.debug=tru|false -  print to console all debug info</ol>
-<ol>PageManager.pageClass="page" - default page class for pages inside stack container.</ol>
-<ol>PageManager.animation.default - animation object for page transition.</ol>
-<ol>PageManager.stack - get/set stack object.</ol>
-<ol>PageManager.display - get/set display object.</ol>
-<ol>PageManager.display.lastPage - get/set last page inside display object.</ol>
-<ol>PageManager.display.beforeLastPage - get before last page inside display object.</ol>
-<ol>PageManager.display.push(page) - push page to display object.</ol>
-<ol>PageManager.display.pop(page|null) - pop page|lastPage from display object.</ol>
+<ol>**PageManager.debug=tru|false** -  print to console all debug info</ol>
+<ol>**PageManager.pageClass="page** - default page class for pages inside stack container.</ol>
+<ol>**PageManager.animation.default** - animation object for page transition.</ol>
+<ol>**PageManager.stack** - get/set stack object.</ol>
+<ol>**PageManager.display** - get/set display object.</ol>
+<ol>**PageManager.display.lastPage** - get/set last page inside display object.</ol>
+<ol>**PageManager.display.firstPage** - get first page from display object.</ol>
+<ol>**PageManager.display.beforeLastPage** - get before last page inside display object.</ol>
+<ol>**PageManager.display.push(page)** - push page to display object.</ol>
+<ol>**PageManager.display.pop(page|null)** - pop page|lastPage from display object.</ol>
+<ol>**PageManager.display.overlay** - get/set overlay object of display object.</ol>
+<ol>**PageManager.stack.push(page)** - push page to stack object.</ol>
+<ol>**PageManager.initStack(pages)** - init stack, push pages DOM collection to stack.pages array.</ol>
+<ol>**PageManager.init()** - Default init function that use default parameters from constructor.</ol>
+<ol>**PageManager.getPage(page_id)** - Retrun page object from stack by page ID parameter.</ol>
+<ol>**PageManager.showPage(page_id,callback)** - Show new page on the display.</ol>
+<ol>**PageManager.hidePage(page_id,callback)** - Hide exitings page from the display.</ol>
 </ul>
 
 
