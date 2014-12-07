@@ -64,3 +64,140 @@ And finaly if You want do hide last one page from display container then:
 ``` javascript
 	PageManager.hidePage()
 ```
+
+#API
+
+* Init Object
+
+``` javascript
+	new _PageManager(display_id,stack_id,callback)
+```
+- *display_id* - an visible element container for display pages on the screen.
+- *stack_id* - an hidden element container for page or page templete.
+- *callback* - this callback fired then object will be ready.
+
+* Show Page
+
+``` javascript
+	PageManager.showPage(page,callback)
+```
+- page - the page to be showed.
+- callback - this callback will befired then show animation ended.
+
+# Hide Page
+
+``` javascript
+	PageManager.hidePage(page,callback)
+```
+- page - the page what need to hide.
+- callback - this callback will befired then hide animation ended.
+
+# Get top one page from display container
+
+``` javascript
+	PageManager.display.lastPage
+```
+return the latest page from display container.
+
+# Get or set display overlay
+
+set overlay:
+
+``` javascript
+	PageManager.display.overlay=Object
+```
+
+remove overlay:
+
+``` javascript
+	PageManager.display.overlay=null
+```
+
+#Transition Animation
+Jus use defaul animation or specify own animation for page. Simple include *data-animation="default"* in to page declaration.
+
+``` html
+<div id="page-stack-id">
+	<div class="page" id="page-main-id" data-animation="default">Same page code here.</div>
+	<div class="page" id="page-about-id" data-animation="my_custom1">Same page code here.</div>
+	.....	
+	<div class="page" id="page-purchase-id"  data-animation="my_custom_cool">Same page code here.</div>
+</div>><!-- hidden pages container/templete stack -->
+```
+And define this animation with PageManager object.
+``` javascript
+PageManager.animation.my_custom1={
+		          show:{
+		            page_new:"show-page 0.250s linear forwards",
+		            page_old:"show-page-back 0.250s linear forwards"
+		            },
+		          hide:{
+		            page_new:"hide-page-back 0.250s linear forwards",
+		            page_old:"hide-page 0.250s linear forwards"
+		            },
+		          }//my_custom1 animation
+```
+And then defne all animation transition inside .css file, for example: 
+
+``` css
+//show new page animation
+@keyframes show-page {
+  0%   { transform: translate3d(100%,0,0);opacity: 0.8;}
+  //50%   { transform: translate3d(50%,0,0);}
+  100% { transform: translate3d(0%,0,0);opacity: 1.0;}
+}
+@-webkit-keyframes show-page {
+  0%   { -webkit-transform: translate3d(100%,0,0);opacity: 0.8; }
+  //50%   { -webkit-transform: translate3d(50%,0,0); }
+  100% { -webkit-transform: translate3d(0%,0,0);opacity: 1.0; }
+}
+@-ms-keyframes show-page {
+  0%   { -ms-transform: translate3d(100%,0,0); opacity: 0.8;}
+  //50%   { -ms-transform: translate3d(50%,0,0); }
+  100% { -ms-transform: translate3d(0%,0,0);opacity: 1.0; }
+}
+
+@keyframes show-page-back {
+  0%   { transform: translate3d(0%,0,0);}
+  10%   { transform: translate3d(0%,0,0);}
+  100% { transform: translate3d(-40%,0,0);}
+}
+@-webkit-keyframes show-page-back {
+  0%   { -webkit-transform: translate3d(0%,0,0); }
+  10%   { -webkit-transform: translate3d(0%,0,0); }
+  100% { -webkit-transform: translate3d(-40%,0,0); }
+}
+@-ms-keyframes show-page-back {
+  0%   { -ms-transform: translate3d(0%,0,0); }
+  10%   { -ms-transform: translate3d(0%,0,0); }
+  100% { -ms-transform: translate3d(-40%,0,0); }
+}
+
+@keyframes hide-page {
+  0%   { transform: translate3d(0%,0,0);}
+  100% { transform: translate3d(110%,0,0);}
+}
+@-webkit-keyframes hide-page {
+  0%   { -webkit-transform: translate3d(0%,0,0); }
+  100% { -webkit-transform: translate3d(110%,0,0); }
+}
+@-ms-keyframes hide-page {
+  0%   { -ms-transform: translate3d(0%,0,0); }
+  100% { -ms-transform: translate3d(110%,0,0); }
+}
+
+@keyframes hide-page-back {
+  0%   { transform: translate3d(-40%,0,0);opacity: 1.0;}
+  100% { transform: translate3d(0%,0,0);opacity: 1.0;}
+}
+@-webkit-keyframes hide-page-back {
+  0%   { -webkit-transform: translate3d(-40%,0,0);}
+  100% { -webkit-transform: translate3d(0%,0,0); }
+}
+@-ms-keyframes hide-page-back {
+  0%   { -ms-transform: translate3d(-40%,0,0); }
+  100% { -ms-transform: translate3d(0%,0,0); }
+}
+```
+
+
