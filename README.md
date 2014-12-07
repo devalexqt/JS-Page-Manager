@@ -99,7 +99,7 @@ And finaly if You want do hide last one page from display container then:
 ```
 return the latest page from display container.
 
-- Get or set display overlay
+**Get or set display overlay**
 
 set overlay:
 
