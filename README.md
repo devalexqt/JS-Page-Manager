@@ -4,7 +4,7 @@ PageManager it's Javascript page system managment in browser. Simple but powerfu
 
 #Demo
 
-YT("http://www.youtube.com/watch?v=ArHQjQyIS70", print = TRUE)
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/Y2VQfRn1H8HE/0.jpg)](http://www.youtube.com/watch?v=2VQfRn1H8HE)
 
 #Usage
 
