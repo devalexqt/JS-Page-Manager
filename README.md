@@ -38,8 +38,8 @@ Now, include in to *"page-stack-id"* element same number of page or page templet
 Next step, its initialize PageManager object an passed containers ID and same callback.
 
 ``` javascript
-  PageManager=new _PageManager("page-display-id","page-stack-id",function(e){
-    if(e.err){console.log("err: "+e.err);return}
+  PageManager=new _PageManager("page-display-id","page-stack-id",function(err,obj){
+    if(err){console.log("err: "+err);return}
     console.log("PageManager object is ready!")
   })
 ```
@@ -47,7 +47,7 @@ Next step, its initialize PageManager object an passed containers ID and same ca
 After PageManager object will be ready than You can show any page from stack container to display container.
 
 ``` javascript
-	PageManager.showPage('page-main-id',function(e){
+	PageManager.showPage('page-main-id',function(err,page){
 	console.log("Now animation end and page is in display container.")
 	})
 ```
@@ -128,16 +128,35 @@ Hide last page from display container.
 **Get top one page from display container**
 
 ``` javascript
-	PageManager.display.lastPage
+	var page=PageManager.display.lastPage
 ```
 return the latest page from display container.
+
+**Push new page to stack object**
+``` javascript
+	var page=document.createElement("div")
+		....
+	PageManager.stack.push(page)
+```
+* return new page
+
+**Remove page from stack object**
+``` javascript
+	var page=PageManager.getPage("page-about-id") 
+		....
+	PageManager.stack.pop(page)
+```
+* return removed page.
 
 **Get or set display overlay**
 
 set overlay:
 
 ``` javascript
-	PageManager.display.overlay=Object
+	  var menu_overlay=document.createElement("div")
+      	menu_overlay.className="menu-page-overlay"
+      	menu_overlay.onclick=hideMenu
+      PageManager.display.overlay=menu_overlay//add menu overlay to display
 ```
 
 remove overlay:
@@ -167,6 +186,7 @@ Get or set stack object:
 ``` javascript
 PageManager.stack
 ```
+
 
 
 <ul>
