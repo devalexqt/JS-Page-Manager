@@ -1,6 +1,6 @@
 
 
-PageManager it's Javascript page system managment in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page managment in webview. This script will be ideal for mobile application that using HTML5 code.
+PageManager it's Javascript page system managment in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page managment in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds!
 
 #Demo
 
@@ -77,8 +77,19 @@ And finaly if You want do hide last one page from display container then:
 	new _PageManager(display_id,stack_id,callback)
 ```
 - *display_id* - an visible element container for display pages on the screen.
-- *stack_id* - an hidden element container for page or page templete.
-- *callback* - this callback fired then object will be ready.
+- *stack_id* - [String|Object] an hidden element container for page or page templete.
+- *callback* - [String|Object] this callback fired then object will be ready.
+``` javascript
+	PageManager=new _PageManager("page-display-id","page-stack-id",function(e){})
+	//or
+    PageManager=new _PageManager(document.getElementById("page-display-id"),"page-stack-id",function(e){})
+    //or
+      PageManager=new _PageManager(document.getElementById("page-display-id"),document.getElementById("page-stack-id"),function(e){
+    if(e.err){console.log("err: "+e.err);return}
+    //console.dir(e.obj)
+    PageManager.showPage('page-main-id',null)
+  })
+```  
 
 **Show Page**
 
