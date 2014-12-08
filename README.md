@@ -15,15 +15,15 @@ Just simple include *page-manager.js* script and base css style file in to head 
 <script type="text/javascript" src="js/page-manager.js"></script>
 ```
 
-Include in to body of HTML page next two elements:
+Include into body of HTML page next two elements:
 
 ``` html
  	<div id="page-display-id"></div><!-- all pages will be displayed here -->
 
- 	<div id="page-stack-id"></div>><!-- hidden pages container/templete stack -->
+ 	<div id="page-stack-id"></div>><!-- hidden pages container/template stack -->
 ```
 
-Now, include in to *"page-stack-id"* element same number of page or page templete. Use the base *page* class (*class="page"*) and specify an page ID (*id="my-first-page-id"*).
+Now, include in to *"page-stack-id"* element same number of page or page template. Use the base *page* class (*class="page"*) and specify an page ID (*id="my-first-page-id"*).
 
 ``` html
 <div id="page-stack-id">
@@ -31,7 +31,7 @@ Now, include in to *"page-stack-id"* element same number of page or page templet
 	<div class="page" id="page-about-id">Same page code here.</div>
 	.....	
 	<div class="page" id="page-purchase-id">Same page code here.</div>
-</div>><!-- hidden pages container/templete stack -->
+</div>><!-- hidden pages container/template stack -->
 
 ```
 
@@ -44,7 +44,7 @@ Next step, its initialize PageManager object an passed containers ID and same ca
   })
 ```
 
-After PageManager object will be ready than You can show any page from stack container to display container.
+After PageManager object will be ready then You can show any page from stack container to display container.
 
 ``` javascript
 	PageManager.showPage('page-main-id',function(err,page){
@@ -63,7 +63,7 @@ var menu_overlay=document.createElement("div")
     ....
     PageManager.display.overlay=null // remove overlay from display
 ```
-And finaly if You want do hide last one page from display container then:
+And finally if You want do hide last one page from display container then:
 
 ``` javascript
 	PageManager.hidePage()
@@ -77,7 +77,7 @@ And finaly if You want do hide last one page from display container then:
 	new _PageManager(display_id,stack_id,callback)
 ```
 - *display_id* - [String|Object] an visible element container for display pages on the screen.
-- *stack_id* - [String|Object] an hidden element container for page or page templete.
+- *stack_id* - [String|Object] an hidden element container for page or page template.
 - *callback(err,obj)* - this callback fired then object will be ready.
 ``` javascript
 	PageManager=new _PageManager("page-display-id","page-stack-id",function(err,obj){})
@@ -171,50 +171,61 @@ Print to console all debug info:
 ``` javascript
 PageManager.debug=tru|false
 ```
-
-Set default page class for pages inside stack container:
-``` javascript
-PageManager.pageClass="page"
-```
-
 Animation object for page transition:
 ``` javascript
 PageManager.animation.my_custom={}
 ```
-
 Get or set stack object:
 ``` javascript
 PageManager.stack
 ```
-
-
-
-<ul>
-<ol><b>PageManager.stack</b> - get/set stack object.</ol>
-<ol><b>PageManager.display</b> - get/set display object.</ol>
-<ol><b>PageManager.display.lastPage</b> - get/set last page inside display object.</ol>
-<ol><b>PageManager.display.firstPage</b> - get first page from display object.</ol>
-<ol><b>PageManager.display.beforeLastPage</b> - get before last page inside display object.</ol>
-<ol><b>PageManager.display.push(page)</b> - push page to display object.</ol>
-<ol><b>PageManager.display.pop(page|null)</b> - pop page|lastPage from display object.</ol>
-<ol><b>PageManager.display.overlay</b> - get/set overlay object of display object.</ol>
-<ol><b>PageManager.stack.push(page)</b> - push page to stack object.</ol>
-<ol><b>PageManager.initStack(pages)</b> - init stack, push pages DOM collection to stack.pages array.</ol>
-<ol><b>PageManager.init()</b> - Default init function that use default parameters from constructor.</ol>
-<ol><b>PageManager.getPage(page_id)</b> - Retrun page object from stack by page ID parameter.</ol>
-<ol><b>PageManager.showPage(page_id,callback)</b> - Show new page on the display.</ol>
-<ol><b>PageManager.hidePage(page_id,callback)</b> - Hide exitings page from the display.</ol>
-</ul>
-
-
-
-
-
-
-
+Get or set display object:
+``` javascript
+PageManager.display
+```
+Get first page from display container:
+``` javascript
+PageManager.display.firstPage
+```
+Get last page from display container:
+``` javascript
+PageManager.display.lastPage
+```
+Get before last page from display container:
+``` javascript
+PageManager.display.beforeLastPage
+```
+Push new page to display container:
+``` javascript
+PageManager.display.push(page)
+```
+Pop page from display container:
+``` javascript
+PageManager.display.pop(page|null)
+```
+Append overlay to display container:
+``` javascript
+PageManager.display.overlay
+```
+Push new page to stack container:
+``` javascript
+PageManager.stack.push(page)
+```
+Get page from stack container:
+``` javascript
+PageManager.getPage(page)
+```
+Show page in display container:
+``` javascript
+PageManager.showPage(page,callback)
+```
+Hide page from container:
+``` javascript
+PageManager.hidePage(page,callback)
+```
 
 #Transition Animation
-Jus use defaul animation or specify own animation for page. Simple include *data-animation="default"* in to page declaration.
+Just use default animation or specify own animation for page. Simple include *data-animation="default"* in to page declaration.
 
 ``` html
 <div id="page-stack-id">
@@ -222,7 +233,7 @@ Jus use defaul animation or specify own animation for page. Simple include *data
 	<div class="page" id="page-about-id" data-animation="my_custom1">Same page code here.</div>
 	.....	
 	<div class="page" id="page-purchase-id"  data-animation="my_custom_cool">Same page code here.</div>
-</div>><!-- hidden pages container/templete stack -->
+</div>><!-- hidden pages container/template stack -->
 ```
 And define this animation with PageManager object.
 ``` javascript
@@ -237,10 +248,10 @@ PageManager.animation.my_custom1={
 		            },
 		          }//my_custom1 animation
 ```
-And then defne all animation transition inside .css file, for example: 
+And then define all animation transition inside .css file, for example: 
 
 ``` css
-//show new page animation
+/*show new page animation*/
 @keyframes show-page {
   0%   { transform: translate3d(100%,0,0);opacity: 0.8;}
   //50%   { transform: translate3d(50%,0,0);}
