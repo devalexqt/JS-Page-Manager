@@ -76,18 +76,18 @@ And finaly if You want do hide last one page from display container then:
 ``` javascript
 	new _PageManager(display_id,stack_id,callback)
 ```
-- *display_id* - an visible element container for display pages on the screen.
+- *display_id* - [String|Object] an visible element container for display pages on the screen.
 - *stack_id* - [String|Object] an hidden element container for page or page templete.
-- *callback* - [String|Object] this callback fired then object will be ready.
+- *callback(err,obj)* - this callback fired then object will be ready.
 ``` javascript
-	PageManager=new _PageManager("page-display-id","page-stack-id",function(e){})
+	PageManager=new _PageManager("page-display-id","page-stack-id",function(err,obj){})
 	//or
-    PageManager=new _PageManager(document.getElementById("page-display-id"),"page-stack-id",function(e){})
+    PageManager=new _PageManager(document.getElementById("page-display-id"),"page-stack-id",function(err,obj){})
     //or
-      PageManager=new _PageManager(document.getElementById("page-display-id"),document.getElementById("page-stack-id"),function(e){
-    if(e.err){console.log("err: "+e.err);return}
-    //console.dir(e.obj)
-    PageManager.showPage('page-main-id',null)
+      PageManager=new _PageManager(document.getElementById("page-display-id"),document.getElementById("page-stack-id"),function(err,obj){
+    if(err){console.log("err: "+err);return}
+    console.dir(obj)
+    ....
   })
 ```  
 
@@ -96,16 +96,34 @@ And finaly if You want do hide last one page from display container then:
 ``` javascript
 	PageManager.showPage(page,callback)
 ```
-- page - the page to be showed.
-- callback - this callback will befired then show animation ended.
-
-**Hide Page**
+- page - [String|Object] id of page or page object that to be showed.
+- callback(err,page_new) -  this callback will be fired then show animation ended and return new page object.
 
 ``` javascript
-	PageManager.hidePage(page,callback)
+	PageManager.showPage('page-main-id',function(err,page){
+	console.dir(page)
+	})
+	//or
+	var new_page=PageManager.getPage("page-about-id")    
+    PageManager.showPage(new_page,function(err,page){
+      console.dir(page)
+    })
 ```
-- page - the page what need to hide.
-- callback - this callback will befired then hide animation ended.
+
+**Hide Page**
+Hide last page from display container.
+
+``` javascript
+	PageManager.hidePage(callback)
+```
+- callback(err,page_new,page_old) - this callback will befired then hide animation ended and return new and old page object.
+
+``` javascript
+	PageManager.hidePage(function(err,page_new,page_old){
+	console.dir(page_new)
+	})
+```
+
 
 **Get top one page from display container**
 
