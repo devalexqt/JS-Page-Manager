@@ -2,15 +2,16 @@
 //
 // Author: Alex, email: devalexqt@gmail.com 
 
-function _PageManager(display_id,stack_id,callback){
+function _PageManager(display_id,stack_id,menu_id,callback){
 
 	var _stack={pages:[]}
 	var _display={pages:[]}
 	var that=this
 
-	this.debug=false
+	this.debug=true
 	this.displayId=display_id
 	this.stackId=stack_id
+	this.menuId=menu_id
 	this.pageClass="page"
 
 
@@ -24,7 +25,17 @@ function _PageManager(display_id,stack_id,callback){
 		            page_new:"hide-page-back 0.250s linear forwards",
 		            page_old:"hide-page 0.250s linear forwards"
 		            },
-		          }//default
+		          },//default
+		   default_menu:{
+		           show:{
+		             page_new:"menu-page-show 0.250s linear forwards",
+		             page_old:"menu-page-forward 0.250s linear forwards"
+		             },
+		           hide:{
+		             page_new:"menu-page-hide 0.250s linear forwards",
+		             page_old:"menu-page-back 0.250s linear forwards"
+		             },
+		           }//default       
         }//animation object  
 
 
@@ -119,6 +130,7 @@ function _PageManager(display_id,stack_id,callback){
 		for(var i=0,page=pages[i];i<pages.length;page=pages[++i]){
 			that.stack.push(page)
 		}//for
+		//console.dir(that.stack.pages)
 	}//initPages
 
 
@@ -178,7 +190,7 @@ function _PageManager(display_id,stack_id,callback){
 	}//getPage
 
 	this.getAnimation=function(name,type,page_type){
-	  var animation=this.animation[name]
+	  var animation=that.animation[name]
 	      animation=animation?animation:this.animation.default
 	  return animation[type][page_type]
 	}//getAnimation
@@ -207,7 +219,7 @@ function _PageManager(display_id,stack_id,callback){
 		           page_new.removeEventListener("webkitAnimationEnd",animationend,false)
 		           page_new.removeEventListener("msAnimationEnd",animationend,false)
 		           if(callback){callback(null,page_new)}
-		            // console.log("animationend")
+		            //console.log("animationend")
 		         }//animationend
 
 		         page_new.addEventListener("animationend",animationend,false)
@@ -215,10 +227,10 @@ function _PageManager(display_id,stack_id,callback){
 		         page_new.addEventListener("msAnimationEnd",animationend,false)  
 		        
 		        var animation={
-		          animation:page_new.getAttribute("data-animation"),
-		          animation_page_new:that.getAnimation(animation,"show","page_new"),
-		          animation_page_old:that.getAnimation(animation,"show","page_old")
+		          animation_page_new:that.getAnimation(page_new.getAttribute("data-animation"),"show","page_new"),
+		          animation_page_old:that.getAnimation(page_new.getAttribute("data-animation"),"show","page_old")
 		          }//animation
+		          //console.dir(animation)
 
 		         page_new.style.animation=animation.animation_page_new
 		         page_new.style.webkitAnimation=animation.animation_page_new
@@ -231,6 +243,7 @@ function _PageManager(display_id,stack_id,callback){
 		       }
 
 	this.display.push(page_new)
+	try{if(event){event.stopPropagation()}}catch(e){console.log(e)}
 	}//showPage
 
 
@@ -246,8 +259,8 @@ function _PageManager(display_id,stack_id,callback){
 		           page_new.removeEventListener("animationend",animationend,false)
 		           page_new.removeEventListener("webkitAnimationEnd",animationend,false)
 		           page_new.removeEventListener("msAnimationEnd",animationend,false)
-		           if(callback){callback(err,page_new,page_old)}
-		           	that.display.pop()
+		           that.display.pop()
+		           if(callback){callback(null,page_new,page_old)}
 		            // console.log("animationend")
 		         }//animationend
 
@@ -256,10 +269,9 @@ function _PageManager(display_id,stack_id,callback){
 		         page_new.addEventListener("msAnimationEnd",animationend,false)  
 		        
 		        var animation={
-		          animation:page_new.getAttribute("data-animation"),
-		          animation_page_new:that.getAnimation(animation,"hide","page_new"),
-		          animation_page_old:that.getAnimation(animation,"hide","page_old")
-		          }//animation
+		          animation_page_new:that.getAnimation(page_old.getAttribute("data-animation"),"hide","page_new"),
+		          animation_page_old:that.getAnimation(page_old.getAttribute("data-animation"),"hide","page_old")
+		          }//animationpage_old
 
 		         page_new.style.animation=animation.animation_page_new
 		         page_new.style.webkitAnimation=animation.animation_page_new
@@ -268,7 +280,21 @@ function _PageManager(display_id,stack_id,callback){
 		         page_old.style.animation=animation.animation_page_old
 		         page_old.style.webkitAnimation=animation.animation_page_old
 		         page_old.style.msAnimation=animation.animation_page_old	
+
+		         try{if(event){event.stopPropagation()}}catch(e){console.log(e)}
+		         return false
 	}//hidePage
+
+
+	this.showMenu=function(menu,callback){
+		//console.log("=>showMenu...")
+		that.showPage(menu?menu:that.menuId,callback)
+	}//showMenu
+
+	this.hideMenu=function(callback){
+		//console.log("==>hideMenu...")
+		that.hidePage(callback)
+	}//showMenu	
 
 if(display_id&&stack_id){this.init()}//init object
 	else{

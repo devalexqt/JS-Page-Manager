@@ -23,7 +23,7 @@ Include into body of HTML page next two elements:
  	<div id="page-stack-id"></div>><!-- hidden pages container/template stack -->
 ```
 
-Now, include in to *"page-stack-id"* element same number of page or page template. Use the base *page* class (*class="page"*) and specify an page ID (*id="my-first-page-id"*).
+Now, include in to *"page-stack-id"* element same number of page or page template. Use the base *page* class (*class="page"*) and specify an page ID (*id="my-first-page-id"*). And include menu container element!
 
 ``` html
 <div id="page-stack-id">
@@ -31,6 +31,12 @@ Now, include in to *"page-stack-id"* element same number of page or page templat
 	<div class="page" id="page-about-id">Same page code here.</div>
 	.....	
 	<div class="page" id="page-purchase-id">Same page code here.</div>
+	<!--MENU-->
+	<div class="page" id="main-menu-id" data-animation="default_menu" onclick="PageManager.hideMenu()">
+          <div class="menu-container">
+          	......
+        </div><!--menu-container-->          
+ 	 </div><!--main-menu-id-->    	
 </div>><!-- hidden pages container/template stack -->
 
 ```
@@ -38,7 +44,7 @@ Now, include in to *"page-stack-id"* element same number of page or page templat
 Next step, its initialize PageManager object an passed containers ID and same callback.
 
 ``` javascript
-  PageManager=new _PageManager("page-display-id","page-stack-id",function(err,obj){
+  PageManager=new _PageManager("page-display-id","page-stack-id","main-menu-id",function(err,obj){
     if(err){console.log("err: "+err);return}
     console.log("PageManager object is ready!")
   })
@@ -123,7 +129,14 @@ Hide last page from display container.
 	console.dir(page_new)
 	})
 ```
-
+**Show Menu**
+``` javascript
+	PageManager.showPage(page,callback)//like show page...
+```
+**Hide Menu**
+``` javascript
+	PageManager.hidePage(callback)//like hide page...
+```
 
 **Get top one page from display container**
 

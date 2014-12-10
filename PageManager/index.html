@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=mdpi" />
+
+     <!--      
+     Enable remote debuger
+       <script type="text/javascript">
+            window.onerror=function(msg, url, line, col, error){
+                 console.log("Error: " + msg + "\nurl: " + url + "\nline: " + line + extra)
+                 alert("Error: " + msg + "\nurl: " + url + "\nline: " + line + extra)
+            }
+          </script> 
+
+            <script src="http://192.168.1.111:8080/target/target-script-min.js#anonymous"></script>
+ -->      
+
+    <link rel="stylesheet/less" type="text/css" href="css/page-manager.less" />
+    <link rel="stylesheet/less" type="text/css" href="css/style.less" />
+<!--
+    <link rel="stylesheet" type="text/css" href="css/page-manager.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  -->
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:500,300' rel='stylesheet' type='text/css'>
+
+ 
+   <script>
+      less = {
+        env: "production",//production,development
+        async: true,
+        fileAsync: true,
+        poll: 1000,
+        functions: {},
+        dumpLineNumbers: "comments",
+        relativeUrls: false,
+        errorReporting:"console",//,
+        rootpath: "./"
+      };
+    </script>
+  <!-- --> 
+     <script type="text/javascript" src="js/less.min.js"></script>
+
+
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/page-manager.js"></script>
+    
+
+  </head>
+
+  <body onload="initPage()">
+
+    <div id="page-display-id"></div><!--all pages will be displayed here-->
+    <div id="page-stack-id"><!--hidden pages container-stack-->
+
+        <div class="page" id="page-main-id">
+          <div class="page-header">
+            <div class="page-header-button header-button-menu" onclick="PageManager.showMenu()"></div>
+            <div class="page-header-title">Main Page</div>
+          </div><!--page-header-->
+          <div class="page-content">
+            <p><b>Main Page</b></p>
+            PageManager it's Javascript page system management in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds!
+            PageManager it's Javascript page system management in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds!
+          </div><!--page-content-->>
+        </div><!--page-main-->
+
+        <div class="page" id="page-about-id">
+          <div class="page-header">
+            <div class="page-header-button header-button-back" onclick="PageManager.hideMenu()"></div>
+            <div class="page-header-title">About</div>
+          </div><!--page-header-->
+          <div class="page-content">
+           Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds!
+            <p/>
+            <input type="button" onclick="PageManager.showPage('page-purchase-id',null)" value="SHOW PURCHASE"></input>
+          </div><!--page-content-->>
+        </div><!--page-about-->
+
+        <div class="page" id="page-purchase-id">
+          <div class="page-header">
+            <div class="page-header-button header-button-back" onclick="PageManager.hideMenu()"></div>
+            <div class="page-header-title">Purchase</div>
+          </div><!--page-header-->
+          <div class="page-content">
+             This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds!
+          </div><!--page-content-->>
+        </div><!--page-purchase-->
+
+          <!--MENU-->
+          <div class="page" id="main-menu-id" data-animation="default_menu" onclick="PageManager.hideMenu()">
+            <div class="menu-container">
+              <div class="menu-header">Same Menu Header</div><!--menu-header-->
+              <div class="menu-list">
+                <div class="menu-list-item menu-list-item-buy" onclick="PageManager.hideMenu(function(){PageManager.showPage('page-purchase-id')});">Purchase full version</div>
+                <div class="menu-list-item menu-list-item-about" onclick="PageManager.hideMenu(function(){PageManager.showPage('page-about-id')});">About</div>
+              </div><!--menu-list-->
+            </div><!--menu-container-->          
+          </div><!--main-menu-id-->
+    </div><!--page-stack-->
+
+
+  </body>
+  </html>  

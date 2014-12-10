@@ -1,0 +1,129 @@
+html{
+margin:0;
+padding:0;
+overflow: hidden;
+-ms-touch-action:none;
+}
+
+body{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 0;
+	margin: 0;
+	font-family:"Source Sans Pro", sans-serif;
+	font-weight: 500;
+	overflow: hidden;
+	  -webkit-user-select: none;  /* Chrome all / Safari all ;  NOT SELECTABLE TEXT!!!*/ 
+	  -moz-user-select: none;     /* Firefox all */
+	  -ms-user-select: none;      /* IE 10+ */
+
+	    transform: translate3d(0,0,0);
+	    -webkit-transform: translate3d(0,0,0);
+	    -ms-transform: translate3d(0,0,0);
+
+	  	-webkit-tap-highlight-color: rgba(0,0,0,0); /*disable div highlith on touch*/
+	  	-ms-touch-action:none;
+}
+
+/*PAGE EXAMPLE STYLE*/
+.page-header{
+	width: 100%;
+	height: 45px;
+	position: absolute;
+	background-color: rgb(57,202,108);
+	text-align: center;
+	z-index: 1;
+
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(100, 100, 100, 0.5);
+	-moz-box-shadow:    0px 2px 5px 0px rgba(100, 100, 100, 0.5);
+	box-shadow:         0px 2px 5px 0px rgba(100, 100, 100, 0.5);
+}
+.page-header-title{
+	display: inline-block;
+	color: rgb(247, 247, 247);
+	line-height: 45px;
+	font-size: 20px;
+	font-weight: 500;
+}
+.page-header-button{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+.header-button-back{
+	top: 0px;
+	bottom: 0px;
+	left: 5px;
+	margin: auto;
+	background-image: url("../icon/back.png");
+}
+.header-button-menu{
+	top: 0px;
+	bottom: 0px;
+	left: 5px;
+	margin: auto;
+	background-image: url("../icon/main-menu.png");
+	background-size: 30px 30px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+.page-content{
+	position: absolute;
+	width: 100%;
+	height:100%;
+	top: 45px;
+}
+
+/* MENU EXAMPLE STYLE*/
+.menu-header{
+	position: absolute;
+	width: 100%;
+	height: 65px;
+	top: 0px;
+	left: 0px;
+	line-height: 97.5px;
+	text-align: center;
+	border-bottom: 1px solid white;
+}
+.menu-list{
+	position: absolute;
+	width: 100%;
+	top: 65px;
+	left: 0px;
+	bottom: 30px;
+	overflow: hidden;
+}
+.menu-footer{
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	bottom: 0px;
+	left: 0px;
+	line-height: 30px;
+	text-align: center;
+	border-top: 1px solid white;
+}
+.menu-list-item{
+	display: inline-block;
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	color: white;
+	text-indent: 45px;
+	border-bottom: 1px solid white;
+	background-size: 35px 35px;
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+}
+.menu-list-item-about{
+	background-image: url("../icon/about.png");
+}
+.menu-list-item-buy{
+	background-image: url("../icon/buy.svg");
+}

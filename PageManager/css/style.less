@@ -1,0 +1,178 @@
+//less
+
+//colors
+@color-green2: rgb(57,202,108);
+@color-metal:rgba(117, 149, 164,1.0);//background
+@color-metal-line:rgba(117, 149, 164,0.5);
+
+//fonts
+
+// @font-face {
+//   font-family: 'Source Sans Pro';
+//   font-style: normal;
+//   font-weight: 300;
+//   src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url("../font/Source Sans Pro.woff") format('woff');
+// }
+
+@font:"Source Sans Pro", sans-serif;
+//menu
+@menu-width:200px;
+@menu-header-height:65px;
+@menu-footer-height:30px;
+@menu-list-item-height:45px;
+
+//page
+@page-background-color:rgb(247, 247, 247);//like white
+@page-header-height:45px;
+@page-header-color:@color-green2;
+@page-header-text-color:@page-background-color;
+
+.page-background{
+	 	background-image: linear-gradient(#7595A4, #A4C0CE 47%, #486B7A);
+		background-image: -webkit-linear-gradient(#7595A4, #A4C0CE 47%, #486B7A);
+		background-image: -ms-linear-gradient(#7595A4, #A4C0CE 47%, #486B7A);
+}
+.page-left-shadown{
+	-webkit-box-shadow: -3px 0px 5px 0px rgba(100, 100, 100, 0.5);
+	-moz-box-shadow:    -3px 0px 5px 0px rgba(100, 100, 100, 0.5);
+	box-shadow:         -3px 0px 5px 0px rgba(100, 100, 100, 0.5);
+}
+.page-header-bottom-shadown{
+	-webkit-box-shadow: 0px 2px 5px 0px rgba(100, 100, 100, 0.5);
+	-moz-box-shadow:    0px 2px 5px 0px rgba(100, 100, 100, 0.5);
+	box-shadow:         0px 2px 5px 0px rgba(100, 100, 100, 0.5);
+}
+.translate-hide-element{
+	transform: translate3d(100%,0,0);
+	-webkit-transform: translate3d(100%,0,0);
+	-ms-transform: translate3d(100%,0,0);
+}
+
+html{
+margin:0;
+padding:0;
+overflow: hidden;
+-ms-touch-action:none;
+}
+
+body{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding: 0;
+	margin: 0;
+	font-family:@font;
+	font-weight: 500;
+	overflow: hidden;
+	  -webkit-user-select: none;  /* Chrome all / Safari all ;  NOT SELECTABLE TEXT!!!*/ 
+	  -moz-user-select: none;     /* Firefox all */
+	  -ms-user-select: none;      /* IE 10+ */
+
+	    transform: translate3d(0,0,0);
+	    -webkit-transform: translate3d(0,0,0);
+	    -ms-transform: translate3d(0,0,0);
+
+	  	-webkit-tap-highlight-color: rgba(0,0,0,0); /*disable div highlith on touch*/
+	  	-ms-touch-action:none;
+}
+
+/*PAGE EXAMPLE STYLE*/
+.page-header{
+	width: 100%;
+	height: @page-header-height;
+	position: absolute;
+	background-color: @page-header-color;
+	text-align: center;
+	z-index: 1;
+	.page-header-bottom-shadown;
+}
+.page-header-title{
+	display: inline-block;
+	color: @page-header-text-color;
+	line-height: @page-header-height;
+	font-size: 20px;
+	font-weight: 500;
+}
+.page-header-button{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	//background-color: red;
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+.header-button-back{
+	top: 0px;
+	bottom: 0px;
+	left: 5px;
+	margin: auto;
+	background-image: url("../icon/back.png");
+}
+.header-button-menu{
+	top: 0px;
+	bottom: 0px;
+	left: 5px;
+	margin: auto;
+	background-image: url("../icon/main-menu.png");
+	background-size: 30px 30px;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+.page-content{
+	position: absolute;
+	width: 100%;
+	height:100%;
+	top: 45px;
+}
+
+/* MENU EXAMPLE STYLE*/
+.menu-header{
+	position: absolute;
+	width: 100%;
+	height: @menu-header-height;
+	top: 0px;
+	left: 0px;
+	line-height: @menu-header-height*1.5;
+	text-align: center;
+	border-bottom: 1px solid @color-metal;
+}
+.menu-list{
+	position: absolute;
+	width: 100%;
+	top: @menu-header-height;
+	left: 0px;
+	bottom: @menu-footer-height;
+//	background: blue;
+	overflow: hidden;
+}
+.menu-footer{
+	position: absolute;
+	width: 100%;
+	height: @menu-footer-height;
+	bottom: 0px;
+	left: 0px;
+	line-height: @menu-footer-height;
+	text-align: center;
+	border-top: 1px solid @color-metal;
+}
+.menu-list-item{
+	display: inline-block;
+	width: 100%;
+	height: @menu-list-item-height;
+	line-height: @menu-list-item-height;
+	color: white;
+	text-indent: 45px;
+	border-bottom: 1px solid @color-metal-line;
+	background-size: 35px 35px;
+	background-position: 5px 50%;
+	background-repeat: no-repeat;
+}
+.menu-list-item-about{
+	background-image: url("../icon/about.png");
+}
+.menu-list-item-buy{
+	background-image: url("../icon/buy.svg");
+}
