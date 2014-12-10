@@ -5,11 +5,13 @@ var url = require("url")
 var less = require('less')//css processor
 var swig  = require('swig')// html templete processor
 
+var rootpath="./www/"
 
 http.createServer(handler).listen(80)
 swig.setDefaults({ cache: false,allowErrors: true });
 
-console.log("==>Simple server for developing started on port 80. Now visit to http://127.0.0.1/ or http://127.0.0.1/index.html")
+console.log("==>Simple server for developing started on port 80. Now visit to http://127.0.0.1/ or http://127.0.0.1/index.html \n Working directory: "+rootpath)
+
 function handler(req,res){
 	console.log("==>New request: "+req.method+", "+req.url)
 	var url_parts=url.parse(req.url,true)
@@ -24,11 +26,11 @@ function handler(req,res){
 	//res.writeHead(200, headers);
 
 
-	var req_file="./www/"+url_parts.pathname
-		var extention=url_parts.pathname.split(".")
-			extention=extention[extention.length-1]
+	if(url_parts.pathname=="/"){url_parts.pathname="/index.html"}	
 
-		if(req_file=="/"){req_file="/index.html"}	
+	var req_file=rootpath+url_parts.pathname
+	var extention=req_file.split(".")
+		extention=extention[extention.length-1]
 
 		if (extention=="css"&&fs.existsSync(req_file.replace(".css",".less"))) {
 			req_file=req_file.replace(".css",".less")
@@ -48,7 +50,7 @@ function handler(req,res){
 			sendPage(data,"text/javascript")
 		}//if js
 		else if(extention=="less"){
-			less.render(data.toString(), function (err, data) {
+			less.render(data.toString(),{paths: rootpath}, function (err, data) {
 				if (err){console.log("==>cant parse less file, err: "+err);res.statusCode=404;res.end(); return};
 				sendPage(data.css,"text/css")//[css,imports]
 			})//less

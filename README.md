@@ -1,6 +1,6 @@
 
-
-PageManager it's Javascript page system management in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds! In other word it's quick start to create cordova html 5 application!
+#Description
+PageManager it's Javascript page system management in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds! In other word it's quick start to create **cordova** html 5 application!
 
 #Demo
 
@@ -15,11 +15,13 @@ cd js-page-manager/
 npm install
 ```
 
-* Run Node.js simple server wath using [less](http://lesscss.org/) pre-processor for css file and [swig](http://paularmstrong.github.io/swig/) html template engine.
+* Run Node.js simple server that using [Less](http://lesscss.org/) as pre-processor for css file and [SWIG](http://paularmstrong.github.io/swig/) as html template engine.
 ```
 node server.js
 ```
 * Now visit to http://127.0.0.1/index.html
+
+* **After You finishing development then You need to generate .css and .html file using Less and SWIG commands**
 
 
 #Usage
