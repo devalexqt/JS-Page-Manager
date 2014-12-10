@@ -1,0 +1,11 @@
+{
+  "name": "icon_generator",
+  "description": "A package for create ready to use/developing simple server with less css processor and swig html templetes.",
+  "author": "Alex zeppelindev.com <devalexqt@gmail.com>",
+  "dependencies": {
+    "mime": ">= x.x.x",
+    "less": ">= x.x.x",
+    "swig": ">= x.x.x"
+  },
+  "engine": "node 0.10.17"
+}
