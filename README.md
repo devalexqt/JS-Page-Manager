@@ -1,6 +1,6 @@
 
 #Description
-PageManager it's Javascript page system management in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds! In other word it's quick start to create **cordova** html 5 application!
+PageManager it's Javascript page system management in browser. Simple but powerful script wath work in all modern desktop and mobile browser and allow to create page management in webview. This script will be ideal for mobile application that using HTML5 code. With PageManager You can create amazing mobile application just in seconds! In other word it's quick start to create **Cordova** HTML5 mobile application!
 
 #Demo
 
