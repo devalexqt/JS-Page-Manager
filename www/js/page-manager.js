@@ -243,7 +243,6 @@ function _PageManager(display_id,stack_id,menu_id,callback){
 		       }
 
 	this.display.push(page_new)
-	try{if(event){event.stopPropagation()}}catch(e){console.log(e)}
 	}//showPage
 
 
@@ -280,20 +279,19 @@ function _PageManager(display_id,stack_id,menu_id,callback){
 		         page_old.style.animation=animation.animation_page_old
 		         page_old.style.webkitAnimation=animation.animation_page_old
 		         page_old.style.msAnimation=animation.animation_page_old	
-
-		         try{if(event){event.stopPropagation()}}catch(e){console.log(e)}
-		         return false
 	}//hidePage
 
 
 	this.showMenu=function(menu,callback){
 		//console.log("=>showMenu...")
 		that.showPage(menu?menu:that.menuId,callback)
+		return false
 	}//showMenu
 
-	this.hideMenu=function(callback){
+	this.hideMenu=function(event,callback){
 		//console.log("==>hideMenu...")
 		that.hidePage(callback)
+		if(event){event.stopPropagation()}
 	}//showMenu	
 
 if(display_id&&stack_id){this.init()}//init object
